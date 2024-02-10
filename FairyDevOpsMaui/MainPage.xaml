@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FairyDevOpsMaui.MainPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid BackgroundColor="#0D1118" 
+          RowDefinitions=".05*,.1*,.45*,.05*,.05*,.3*">
+        <Label FontSize="16"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               TextColor="White"
+               Text="Impara .Net Maui facilmente"/>
+
+        <Grid Grid.Row="1" Margin="20,8" >
+            <RoundRectangle Grid.Row="1"
+                            CornerRadius="25"
+                            Fill="#311B45"
+                            HeightRequest="45"/>
+            <SearchBar CancelButtonColor="White"
+                       Placeholder="Cerca"
+                       TextColor="White"
+                       PlaceholderColor="#AC9DB9"
+                       VerticalOptions="Center"/>
+        </Grid>
+
+        <CarouselView Grid.Row="2"
+                      IndicatorView="indicatorView"
+                      PeekAreaInsets="40"
+                      ItemsSource="{Binding FairyModels}">
+
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="0"
+                                   Orientation="Horizontal"
+                                   SnapPointsType="MandatorySingle"
+                                   SnapPointsAlignment="Center"/>
+            </CarouselView.ItemsLayout>
+
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Border Grid.RowSpan="3"
+                                Stroke="#6E557C"
+                                WidthRequest="250"
+                                HeightRequest="250"
+                                StrokeThickness="2"
+                                BackgroundColor="#311b45"
+                                StrokeShape="RoundRectangle 30, 30, 30, 30" >
+                            <Grid  RowDefinitions=".2*, .6*, .2*">
+                                <Image Aspect="AspectFill" 
+                                       Grid.RowSpan="3"
+                                       Source="{Binding Image}"/>
+
+                                <RoundRectangle Opacity=".7"
+                                                Grid.RowSpan="3"
+                                                HeightRequest="300"
+                                                WidthRequest="300"
+                                                CornerRadius="30">
+                                    <RoundRectangle.Fill>
+                                        <LinearGradientBrush  EndPoint="0,1">
+                                            <GradientStop Offset="0"  Color="Transparent"></GradientStop>
+                                            <GradientStop Offset="1"  Color="#030005"></GradientStop>
+                                        </LinearGradientBrush>
+                                    </RoundRectangle.Fill>
+                                </RoundRectangle>
+
+                                <VerticalStackLayout Grid.Row="2" Margin="20,0,0,0">
+                                    <Label Text="{Binding ReadTime, StringFormat='Read time: {0%m} mins' }"
+                                           TextColor="White"/>
+
+                                    <Label Text="{Binding Name}"
+                                           TextColor="White"
+                                           FontSize="Large"/>
+
+                                </VerticalStackLayout>
+                                <Label FontSize="26"
+                                       Text="&#xF097;"
+                                       Margin="0, 20, 20, 0"
+                                       HorizontalOptions="End"
+                                       TextColor="#fff"
+                                       FontFamily="Icons"/>
+
+                            </Grid>
+                            <Border.Shadow>
+                                <Shadow Brush="#C283FD"
+                                        Opacity=".7"
+                                        Radius="100"
+                                        Offset="0,0"/>
+                            </Border.Shadow>
+                        </Border>
+
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <IndicatorView x:Name="indicatorView"
+                       Grid.Row="3"
+                       SelectedIndicatorColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       IndicatorColor="#616134"/>
+
+        <Label Grid.Row="4"
+               FontSize="16"
+               Margin="20,0"
+               TextColor="White"
+               VerticalOptions="Center"
+               Text="Seleziona l'argomento che preferisci"/>
+        
+        <CollectionView Grid.Row="5"
+                        ItemsSource="{Binding FairyModels2}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="25"
+                                   Orientation="Horizontal"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="#6E557C"
+                            WidthRequest="200"
+                            HeightRequest="200"
+                            StrokeThickness="2"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            StrokeShape="RoundRectangle 20,20,20,20">
+                        <Image Aspect="AspectFill"
+                               Source="{Binding Image}"/>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+
+
+        <Grid Grid.Row="5"
+              Margin="20,0"
+              HeightRequest="50"
+              VerticalOptions="End">
+            <Border BackgroundColor="#311B45"
+                    Stroke="#6E557C"
+                    StrokeShape="RoundRectangle 30,30,30,30"
+                    StrokeThickness="2">
+                <Grid ColumnDefinitions="*, *, *, *"
+                      RowDefinitions="*,*"
+                      RowSpacing="3">
+                    <!--Home-->
+                    <Label Grid.Row="1"
+                           FontSize="10"
+                           Text="Home"
+                           TextColor="#AC9D89"
+                           HorizontalOptions="Center"/>
+                    <Label FontFamily="Icons"
+                           FontSize="20"
+                           Text="&#xEAE7;"
+                           TextColor="#AC9D89"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                    <!--fine Home-->
+                    
+                    
+                    <!--Corsi-->
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           FontSize="10"
+                           Text="Corsi"
+                           TextColor="#AC9D89"
+                           HorizontalOptions="Center"/>
+                    
+                    <Label FontFamily="Icons"
+                           Grid.Column="1"
+                           FontSize="20"
+                           Text="&#xF121;"
+                           TextColor="#AC9D89"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                    <!--Fine Corsi-->
+
+
+                    <!--Progetti-->
+                    <Label Grid.Row="1"
+                           Grid.Column="2"
+                           FontSize="10"
+                           Text="Progetti"
+                           TextColor="#AC9D89"
+                           HorizontalOptions="Center"/>
+                    
+                    <Label FontFamily="Icons"
+                           Grid.Column="2"
+                           FontSize="20"
+                           Text="&#xF0ED;"
+                           TextColor="#AC9D89"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                    <!--Fine Progetti-->
+
+                    <!--Parametri-->
+                    <Label Grid.Row="1"
+                           Grid.Column="3"
+                           FontSize="10"
+                           Text="Parametri"
+                           TextColor="#AC9D89"
+                           HorizontalOptions="Center"/>
+
+                    <Label FontFamily="Icons"
+                           Grid.Column="3"
+                           FontSize="20"
+                           Text="&#xF1DE;"
+                           TextColor="#AC9D89"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                    <!--Fine Parametri-->
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>
